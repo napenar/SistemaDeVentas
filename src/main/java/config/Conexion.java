@@ -15,13 +15,13 @@ import java.sql.DriverManager;
 public class Conexion {
 
     Connection con;
-    String url = "jdbc:mysql://localhost:3306/bd_ventas";
-    String user = "root";
-    String pass = "";
+    String url = "jdbc:postgresql://ec2-52-87-123-108.compute-1.amazonaws.com:5432/d72pjkcnbl4vfa?sslmode=require";
+    String user = "eawgjfxqpjlxgt";
+    String pass = "345127d569a666b61be5f7c45f4c5f5a7c487eab38ecbdc658d161ba6b5bcb98";
 
     public Connection Conexion() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
             System.out.println("Error en la conexion: " + e);
