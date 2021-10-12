@@ -23,7 +23,7 @@ public class EmpleadoDAO {
 
     public Empleado validar(String user, String dni) {
         Empleado em = new Empleado();
-        String sql = "select * from empleado where User = ? and Dni = ?";
+        String sql = "select * from empleado where usuario = ? and dni = ?";
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
@@ -31,12 +31,13 @@ public class EmpleadoDAO {
             ps.setString(2, dni);
             rs = ps.executeQuery();
             while(rs.next()){
-                em.setUser(rs.getString("User"));
-                em.setDni(rs.getString("Dni"));
-                em.setNom(rs.getString("Nombres"));
-                em.setId(rs.getInt("IdEmpleado"));
+                em.setUser(rs.getString("usuario"));
+                em.setDni(rs.getString("dni"));
+                em.setNom(rs.getString("nombres"));
+                em.setId(rs.getInt("idempleado"));
             }
         } catch (Exception e) {
+            System.out.println("Error Conexion en empleadoDAO " + e);
         }
         return em;
     }

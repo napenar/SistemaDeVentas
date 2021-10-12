@@ -16,12 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author NORVEY
+ * @author Jesus Valencia
  */
 public class Validar extends HttpServlet {
     
-    EmpleadoDAO edao = new EmpleadoDAO();
     Empleado em = new Empleado();
+    EmpleadoDAO edao = new EmpleadoDAO();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +35,7 @@ public class Validar extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -75,18 +75,27 @@ public class Validar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("Ingresando a Validar");
         String accion = request.getParameter("accion");
-        if (accion.equalsIgnoreCase("Ingresar")) {
-            String user = request.getParameter("txtuser");
-            String pass = request.getParameter("txtpass");
-            em = edao.validar(user, pass);
-            if (em.getUser() != null) {
-                request.getRequestDispatcher("Controlador?accion=Principal").forward(request, response);
-            }else{
+        try {
+            if (accion.equalsIgnoreCase("Ingresar")) {
+                String user = request.getParameter("txtuser");
+                String pass = request.getParameter("txtpass");
+                
+                System.out.println("user = " + user);
+                System.out.println("pass = " + pass);
+                
+                em = edao.validar(user, pass);
+                if (em.getUser() != null) {
+                    request.getRequestDispatcher("Controlador?accion=Principal").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
+            } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-        } else {
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+        } catch (Exception e) {
+            System.out.println("Error en Validar");
         }
     }
 

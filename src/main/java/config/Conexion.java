@@ -20,10 +20,13 @@ public class Conexion {
     String pass = "345127d569a666b61be5f7c45f4c5f5a7c487eab38ecbdc658d161ba6b5bcb98";
 
     public Connection Conexion() {
+        System.out.println("Hola");
         try {
+            System.out.println("Conexion exitosa");
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
+            System.out.println("Error de conexion");
             System.out.println("Error en la conexion: " + e);
         }
         return con;
