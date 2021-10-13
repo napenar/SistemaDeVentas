@@ -5,8 +5,10 @@
  */
 package Controlador;
 
+import Modelo.Empleado;
+import Modelo.EmpleadoDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Controlador extends HttpServlet {
 
+    Empleado em = new Empleado();
+    EmpleadoDAO edao = new EmpleadoDAO();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,15 +34,42 @@ public class Controlador extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String accion = request.getParameter("accion");
-        switch(accion){
-            case "Principal":{
-                request.getRequestDispatcher("Principal.jsp").forward(request, response);
-                break;
-            }
-            default:{
-                throw new AssertionError();
-            }
+        String menu = request.getParameter("menu");
+        
+        if(menu.equalsIgnoreCase("Principal")){
+            request.getRequestDispatcher("Principal.jsp").forward(request, response);
         }
+        if(menu.equalsIgnoreCase("Producto")){
+            request.getRequestDispatcher("Producto.jsp").forward(request, response);
+        }
+        if(menu.equalsIgnoreCase("Cliente")){
+            request.getRequestDispatcher("Clientes.jsp").forward(request, response);
+        }
+        if(menu.equalsIgnoreCase("Empleado")){
+            switch(accion){
+                case "Listar":{
+                    List lista = edao.listar();
+                    request.setAttribute("empleados", lista);
+                    break;
+                }
+                case "Agregar":{
+                    break;
+                }
+                case "Editar":{
+                    break;
+                }
+                case "Delete":{
+                    break;
+                }
+            }
+            request.getRequestDispatcher("Empleado.jsp").forward(request, response);
+        }
+        if(menu.equalsIgnoreCase("NuevaVenta")){
+            request.getRequestDispatcher("RegistrarVenta.jsp").forward(request, response);
+        }
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

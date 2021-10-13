@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
- * @author Jesus Valencia
+ * 
+ * @author NORVEY
  */
 public class Validar extends HttpServlet {
     
@@ -87,7 +87,8 @@ public class Validar extends HttpServlet {
                 
                 em = edao.validar(user, pass);
                 if (em.getUser() != null) {
-                    request.getRequestDispatcher("Controlador?accion=Principal").forward(request, response);
+                    request.setAttribute("usuario", em);
+                    request.getRequestDispatcher("Controlador?menu=Principal").forward(request, response);
                 } else {
                     request.getRequestDispatcher("index.jsp").forward(request, response);
                 }
