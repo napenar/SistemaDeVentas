@@ -36,7 +36,7 @@
                                     <div class="row">
                                         <div class="col-sm-6 d-flex">
                                             <input type="text" name="codigocliente" value="${c.getDni()}" class="form-control" placeholder="Codigo">
-                                            <input type="submit" name="accion" value="BuscarCliente" class="btn btn-outline-dark ">
+                                            <button type="submit" name="accion" value="BuscarCliente" class="btn btn-outline-dark ">Buscar</button>
                                         </div>
 
                                         <div class="col-sm-6">
