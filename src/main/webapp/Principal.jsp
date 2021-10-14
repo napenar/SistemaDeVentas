@@ -25,16 +25,16 @@
                         <a class="btn btn-outline-light itemNavBar" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light itemNavBar" href="Controlador?menu=Producto" target="myFrame">Producto</a>
+                        <a class="btn btn-outline-light itemNavBar" href="Controlador?menu=Producto&accion=Listar" target="myFrame">Producto</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-outline-light itemNavBar" href="Controlador?menu=Empleado&accion=Listar" target="myFrame">Empleado</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light itemNavBar" href="Controlador?menu=Cliente" target="myFrame">Clientes</a>
+                        <a class="btn btn-outline-light itemNavBar" href="Controlador?menu=Cliente&accion=Listar" target="myFrame">Clientes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-outline-light itemNavBar" href="Controlador?menu=NuevaVenta" target="myFrame">Nueva venta</a>
+                        <a class="btn btn-outline-light itemNavBar" href="Controlador?menu=NuevaVenta&accion=default" target="myFrame">Nueva venta</a>
                     </li>
                 </ul>
 

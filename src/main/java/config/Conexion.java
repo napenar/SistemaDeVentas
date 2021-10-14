@@ -20,9 +20,7 @@ public class Conexion {
     String pass = "345127d569a666b61be5f7c45f4c5f5a7c487eab38ecbdc658d161ba6b5bcb98";
 
     public Connection Conexion() {
-        System.out.println("Hola");
         try {
-            System.out.println("Conexion exitosa");
             Class.forName("org.postgresql.Driver");
             con = DriverManager.getConnection(url, user, pass);
         } catch (Exception e) {
@@ -31,5 +29,39 @@ public class Conexion {
         }
         return con;
     }
+
+    public Connection getCon() {
+        return con;
+    }
+
+    public void setCon(Connection con) {
+        this.con = con;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+    
+    
 
 }

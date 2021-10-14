@@ -39,6 +39,8 @@ public class EmpleadoDAO {
                 em.setNom(rs.getString("nombres"));
                 em.setId(rs.getInt("idempleado"));
             }
+            ps.close();
+            cn.getCon().close();
         } catch (Exception e) {
             System.out.println("Error Conexion en empleadoDAO " + e);
         }
@@ -63,6 +65,8 @@ public class EmpleadoDAO {
                 em.setUser(rs.getString(6));
                 lista.add(em);
             }
+            ps.close();
+            cn.getCon().close();
         } catch (Exception e) {
             System.out.println("Error en listar EmpleadoDAO " + e);
         }
@@ -80,6 +84,8 @@ public class EmpleadoDAO {
             ps.setString(4, em.getEstado());
             ps.setString(5, em.getUser());
             r = ps.executeUpdate();
+            ps.close();
+            cn.getCon().close();
         } catch (Exception e) {
             System.out.println("Error en agregar en EmpleadoDAO " + e);
         }
@@ -101,7 +107,10 @@ public class EmpleadoDAO {
                 em.setEstado(rs.getString(5));
                 em.setUser(rs.getString(6));
             }
+            ps.close();
+            cn.getCon().close();
         } catch (Exception e) {
+            System.out.println("Error en EmpleadoDAO listarID " + e);
         }
         return em;
     }
@@ -118,6 +127,8 @@ public class EmpleadoDAO {
             ps.setString(5, em.getUser());
             ps.setInt(6, em.getId());
             r = ps.executeUpdate();
+            ps.close();
+            cn.getCon().close();
         } catch (Exception e) {
             System.out.println("Error en actualizar en EmpleadoDAO " + e);
         }
@@ -126,11 +137,13 @@ public class EmpleadoDAO {
     }
 
     public void delete(int id) {
-        String sql = "delete from empleado where idempleado=?";
+        String sql = "delete from empleado where idempleado="+id;
         try {
             con = cn.Conexion();
             ps = con.prepareStatement(sql);
             r = ps.executeUpdate();
+            ps.close();
+            cn.getCon().close();
         } catch (Exception e) {
             System.out.println("Error en eliminar en EmpleadoDAO " + e);
         }
