@@ -11,6 +11,13 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <style>
+            @media print{
+                .parte1,btn,accion{
+                    display: none;
+                }
+            }
+        </style>
         <title>VENTAS</title>
     </head>
     <body>
@@ -18,7 +25,7 @@
         <div class="container-fluid">
             <div class="row">
 
-                <div class="col-sm-4">
+                <div class="col-sm-4 parte1">
                     <form action="Controlador?menu=NuevaVenta" method="POST">
                         <div class="card">
                             <div class="card-body">
@@ -89,12 +96,12 @@
                                 <thead>
                                     <tr>
                                         <th>Nro</th>
-                                        <th>Codigo Producto</th>
+                                        <th>Codigo</th>
                                         <th>Descripcion</th>
                                         <th>Precio</th>
                                         <th>Cantidad</th>
                                         <th>Subtotal</th>
-                                        <th>Acciones</th>
+                                        <th class="accion">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -118,7 +125,7 @@
                         </div>
                         <div class="card-footer d-flex">
                             <div class="col-sm-6">
-                                <a href="Controlador?menu=NuevaVenta&accion=GenerarVenta" class="btn btn-warning">Generar Venta</a>
+                                <a href="Controlador?menu=NuevaVenta&accion=GenerarVenta" class="btn btn-warning" onclick="print()">Generar Venta</a>
                                 
                                 <input type="submit" name="accion" value="Cancelar" class="btn btn-danger">
                             </div>

@@ -277,6 +277,16 @@ public class Controlador extends HttpServlet {
                     break;
                 }
                 case "GenerarVenta": {
+                    //adtualizacion stock
+                    for(int i=0; i<lista.size();i++){
+                        Producto  p = new Producto();
+                        int cant = lista.get(i).getCantidad();
+                        int idproducto=lista.get(i).getIdproducto();
+                        ProductoDAO objPDAO = new ProductoDAO();
+                        p = objPDAO.buscar(idproducto);
+                        int sac=p.getStock()-cant;
+                        objPDAO.actualizarstock(idproducto, sac);
+                    }
                     //guardar venta
                     v.setIdcliente(cl.getId());
                     v.setIdempleado(2);

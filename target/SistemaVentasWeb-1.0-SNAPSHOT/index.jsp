@@ -15,7 +15,7 @@
     <body>
         
         <div class="container mt-4 col-lg-4">
-            <div class="card col-sm-10">
+            <div class="card col-sm-12">
                 <div class="card-body ">
                     <form class="form-sing" action="Validar" method="POST">
                         <div class="form-group text-center">
@@ -30,6 +30,7 @@
                             <label>Contraseña: </label>
                             <input type="password" name="txtpass" class="form-control">
                         </div>
+                        <br>
                         <input type="submit" name="accion" value="Ingresar" class="btn btn-primary form-control">
                     </form>
                 </div>

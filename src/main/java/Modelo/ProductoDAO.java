@@ -46,6 +46,46 @@ public class ProductoDAO {
         }
         return pd;
     }
+    
+    public Producto buscar(int id){
+        Producto pd = new Producto();
+        String sql = "select * from producto where idproducto = ?";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                pd.setId(rs.getInt(1));
+                pd.setNom(rs.getString(2));
+                pd.setPrecio(rs.getDouble(3));
+                pd.setStock(rs.getInt(4));
+                pd.setEstado(rs.getString(5));
+            }
+            ps.close();
+            cn.getCon().close();
+        } catch (Exception e) {
+            System.out.println("Error en productoDAO buscar " + e);
+        }
+        return pd;
+    }
+    
+    public int actualizarstock(int id, int stock){
+        String sql = "update producto set stock=? where idproducto=?";
+        try {
+            con = cn.Conexion();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, stock);
+            ps.setInt(2, id);
+            r = ps.executeUpdate();
+            ps.close();
+            cn.getCon().close();
+        } catch (Exception e) {
+            System.out.println("Error en actualizar en ProductoDAO " + e);
+        }
+        
+        return r;
+    }
 
     //OPERACIONES CRUD
     public List listar() {
