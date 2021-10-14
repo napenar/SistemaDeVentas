@@ -21,7 +21,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.bind.DatatypeConverter;
 
 /**
  *
@@ -37,6 +36,7 @@ public class Controlador extends HttpServlet {
     ProductoDAO pdao = new ProductoDAO();
     int ide;
     Venta v = new Venta();
+    VentaDAO vdao = new VentaDAO();
     List<Venta> lista = new ArrayList<>();
     int item = 0;
     int cod;
@@ -46,7 +46,7 @@ public class Controlador extends HttpServlet {
     double subtotal;
     double totalPagar;
     String numeroserie;
-    VentaDAO vdao = new VentaDAO();
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
